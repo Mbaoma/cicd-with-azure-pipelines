@@ -14,7 +14,7 @@ $ terraform apply
 
 
 ### Second Task
-- Run the project locally
+#### Run the project locally
 ```bash
 npm install -g @angular/cli
 npm install 
@@ -25,4 +25,9 @@ ng serve
 <img width="1151" alt="image" src="https://user-images.githubusercontent.com/49791498/194074211-ea792967-9488-47ae-897f-457001ea56f5.png">
 
 
-- Setup CI/CD Pipeline using Azure DevOps Pipelines
+#### Setup CI/CD Pipeline using Azure DevOps Pipelines
+- First, I import the repository from Github into Azure DevOps
+<img width="1027" alt="image" src="https://user-images.githubusercontent.com/49791498/194114623-e85a8417-36cc-4a9e-9e0a-6c3b8eb90023.png">
+
+- Set up CI Pipeline using Azure Pipelines
+
