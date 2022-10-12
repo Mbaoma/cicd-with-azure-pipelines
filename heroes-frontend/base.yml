@@ -21,6 +21,11 @@ stages:
             inputs:
               versionSpec: "16.x"
             displayName: "Install Node.js"
+          
+          - task: Npm@1
+            inputs:
+              command: "init"
+            displayName: "Npm Initialize"
 
           - task: Npm@1
             inputs:
