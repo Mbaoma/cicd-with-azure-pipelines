@@ -24,8 +24,8 @@ stages:
           
           - task: Npm@1
             inputs:
-              command: "init"
-            displayName: "Npm Initialize"
+              command: "install npm@latest -g "
+            displayName: "Npm Install -g"
 
           - task: Npm@1
             inputs:
