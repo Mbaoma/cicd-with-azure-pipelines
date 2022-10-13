@@ -15,7 +15,7 @@ steps:
           - task: Npm@1
             inputs:
               command: "install"
-              workingDir: (Build.Repository.LocalPath)/heroes-frontend
+              workingDir: (Build.Repository.LocalPath)/
             displayName: "Npm Install"
 
           - task: Npm@1
