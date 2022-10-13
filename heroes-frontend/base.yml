@@ -12,15 +12,15 @@ steps:
               versionSpec: "16.x"
             displayName: "Install Node.js"
           
-          - script: |
-              find .
-              npm install -g @angular/cli
-              npm install
+          # - script: |
+          #     find .
+          #     npm install -g @angular/cli
+          #     npm install
 
-          # - task: Npm@1
-          #   inputs:
-          #     command: "install"
-          #     workingDir: /home/vsts/work
+          - task: Npm@1
+            inputs:
+              command: "install"
+              workingDir: ./heroes-frontend/package.json
             displayName: "Npm Install"
 
           - task: Npm@1
