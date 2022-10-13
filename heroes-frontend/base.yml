@@ -11,11 +11,6 @@ steps:
             inputs:
               versionSpec: "16.x"
             displayName: "Install Node.js"
-          
-          # - script: |
-          #     find .
-          #     npm install -g @angular/cli
-          #     npm install
 
           - task: Npm@1
             inputs:
@@ -26,13 +21,14 @@ steps:
           - task: Npm@1
             inputs:
               command: custom
-              
+              workingDir: ./heroes-frontend
               customCommand: "run build"
             displayName: "Build Angular app"
           
           - task: Npm@1
             inputs:
               command: custom
+              workingDir: ./heroes-frontend
               customCommand: "run test"
             displayName: "Test Angular app"
          
