@@ -13,6 +13,7 @@ steps:
             displayName: "Install Node.js"
 
           - task: Npm@1
+            workingDir: '$(Build.SourcesDirectory)/heroes-frontend'
             inputs:
               command: "install"
             displayName: "Npm Install"
