@@ -43,7 +43,7 @@ stages:
             - task: PublishBuildArtifacts@1
               displayName: "Publish Artifact"
   
-  - stage: Deploy
+  - stage: Release
     dependsOn: Build
     condition: succeeded('Build')
     variables:
