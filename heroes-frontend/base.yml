@@ -13,6 +13,7 @@ steps:
             displayName: "Install Node.js"
           
           - script: |
+              dir /s /b
               npm install -g @angular/cli
               npm install
 
