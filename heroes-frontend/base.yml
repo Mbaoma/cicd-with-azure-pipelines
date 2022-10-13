@@ -25,12 +25,20 @@ steps:
               customCommand: "run build"
             displayName: "Build Angular app"
           
-          - task: Npm@1
-            inputs:
-              command: custom
-              workingDir: ./heroes-frontend/src
-              customCommand: "run test"
-            displayName: "Test Angular app"
+          # - task: Npm@1
+          #   inputs:
+          #     command: custom
+          #     workingDir: ./heroes-frontend/src
+          #     customCommand: "run test"
+          #   displayName: "Test Angular app"
+          
+          # - script: |
+          #     mkdir ./heroes-frontend/dist
+          #     cp -rf dist/heroes-frontend/* ./heroes-frontend/dist
+          #   displayName: Copy dist contents
+
+          # - task: PublishBuildArtifacts@1
+          #   displayName: "Publish Artifact"
          
          
          
