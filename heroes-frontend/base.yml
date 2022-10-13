@@ -28,7 +28,7 @@ steps:
           - task: Npm@1
             inputs:
               command: custom
-              workingDir: ./heroes-frontend
+              workingDir: ./heroes-frontend/src
               customCommand: "run test"
             displayName: "Test Angular app"
          
