@@ -13,14 +13,15 @@ steps:
             displayName: "Install Node.js"
 
           - task: Npm@1
-            workingDir: '$(Build.SourcesDirectory)/heroes-frontend'
             inputs:
               command: "install"
+              workingDir: (Build.Repository.LocalPath)/heroes-frontend
             displayName: "Npm Install"
 
           - task: Npm@1
             inputs:
               command: custom
+              
               customCommand: "run build"
             displayName: "Build Angular app"
           
