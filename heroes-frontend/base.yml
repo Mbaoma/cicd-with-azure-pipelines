@@ -1,5 +1,5 @@
 trigger:
-  - main
+  - dev
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -11,11 +11,15 @@ steps:
             inputs:
               versionSpec: "16.x"
             displayName: "Install Node.js"
+          
+          - script: |
+              npm install -g @angular/cli
+              npm install
 
-          - task: Npm@1
-            inputs:
-              command: "install"
-              workingDir: /home/vsts/work
+          # - task: Npm@1
+          #   inputs:
+          #     command: "install"
+          #     workingDir: /home/vsts/work
             displayName: "Npm Install"
 
           - task: Npm@1
