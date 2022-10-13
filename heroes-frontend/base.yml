@@ -64,4 +64,4 @@ stages:
                     scriptType: bash
                     scriptLocation: inlineScript
                     inlineScript: |
-                      az storage blob upload-batch -d '$web' --account-name $(storageAccount) --account-key $(accountKey)  -s "$(Build.ArtifactStagingDirectory)/dist"         
+                      az storage blob upload-batch -d '$web' --account-name $(storageAccount) --account-key $(accountKey)  -s "$(Build.ArtifactStagingDirectory)/drop/dist"         
