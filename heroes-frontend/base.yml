@@ -1,0 +1,67 @@
+trigger:
+  - main
+
+stages:
+  - stage: Build
+    jobs:
+        - job: Build
+          displayName: "Angular App Build"
+          workspace:
+            clean: all
+        
+          steps:
+            - task: NodeTool@0
+              inputs:
+                versionSpec: "16.x"
+              displayName: "Install Node.js"
+
+            - task: Npm@1
+              inputs:
+                command: "install"
+                workingDir: ./heroes-frontend
+              displayName: "Npm Install"
+
+            - task: Npm@1
+              inputs:
+                command: custom
+                workingDir: ./heroes-frontend
+                customCommand: "run build"
+              displayName: "Build Angular app"
+            
+            # - task: Npm@1
+            #   inputs:
+            #     command: custom
+            #     workingDir: ./heroes-frontend/src
+            #     customCommand: "run test"
+            #   displayName: "Test Angular app"
+            
+            - script: |
+                mkdir $(Build.ArtifactStagingDirectory)/dist
+                cp -rf ./heroes-frontend/* $(Build.ArtifactStagingDirectory)/dist
+              displayName: Copy dist contents
+
+            - task: PublishBuildArtifacts@1
+              displayName: "Publish Artifact"
+  
+  - stage: Release
+    dependsOn: Build
+    condition: succeeded('Build')
+    variables:
+      - group: GeneralDeets
+      - group: StorageAccountDeets
+    jobs:
+      - deployment: Deploy
+        displayName: Deploy to Azure
+        environment: DEV
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: AzureCLI@2
+                  displayName: "Deploy Angular app"
+                  inputs:
+                    azureSubscription: $(azureSubscription)
+                    scriptType: bash
+                    scriptLocation: inlineScript
+                    inlineScript: |
+                      az storage blob upload-batch -d '$web' --account-name $(storageAccount) --account-key $(accountKey)  -s "$(Agent.BuildDirectory)/drop/dist"        
