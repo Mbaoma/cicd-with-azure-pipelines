@@ -75,5 +75,5 @@ git push origin main
 
 - [Repo Link](https://github.com/Mbaoma/cicd-with-azure-pipelines)
 
-- [Website Link](https://vxdio738db3399247899b.z13.web.core.windows.net/dashboard)
+- [Website Link](https://vxdio738db3399247899b.z13.web.core.windows.net/)
 
