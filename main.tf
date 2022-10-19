@@ -78,7 +78,7 @@ resource "random_id" "random_id" {
 
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "storage_account" {
-  name                     = "diagunq${random_id.random_id.hex}"
+  name                     = "vxdio${random_id.random_id.hex}"
   location                 = azurerm_resource_group.myRG.location
   resource_group_name      = azurerm_resource_group.myRG.name
   account_tier             = "Standard"
@@ -88,7 +88,7 @@ resource "azurerm_storage_account" "storage_account" {
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault" "key_vault" {
-  name                        = "storeKeys"
+  name                        = "storeAngularKeys"
   location                    = azurerm_resource_group.myRG.location
   resource_group_name         = azurerm_resource_group.myRG.name
   enabled_for_disk_encryption = true
@@ -100,18 +100,24 @@ resource "azurerm_key_vault" "key_vault" {
 
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = data.azurerm_client_config.current.object_id
+    object_id = "d746815a-0433-4a21-b95d-fc437d2d475b" #data.azurerm_client_config.current.object_id
 
     key_permissions = [
       "Get",
+      "List",
+      "Create",
     ]
 
     secret_permissions = [
       "Get",
+       "List",
+      "Set",
     ]
 
     storage_permissions = [
       "Get",
+      "List",
+      "Set",
     ]
   }
 }

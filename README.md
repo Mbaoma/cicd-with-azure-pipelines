@@ -49,7 +49,7 @@ git push origin main
 - Create a service connection under Project settings. This to allow the pipeline upload our build files to the storage blob attached to the VM above.
 -- The resource type is ```Azure Resource Manager```.
 
-- Create ```variable groups``` to store the sensitive information such as the storage account snd subscription names.
+- Create ```variable groups``` to store the sensitive information such as the storage account and subscription names.
 -- Set up Azure secrets, and store the value of storage account key there. Ensure to toggle on the option that says ```Link secrets from an Azure key as variables ```, this is to import the secret you created in Azure secrets.
 
 <img width="1389" alt="image" src="https://user-images.githubusercontent.com/49791498/195693544-e5b5507d-b00f-41e1-afa5-c7b03749da4f.png">
@@ -75,5 +75,5 @@ git push origin main
 
 - [Repo Link](https://github.com/Mbaoma/cicd-with-azure-pipelines)
 
-- [Website Link](https://diagunq738db3399247899b.z13.web.core.windows.net/)
+- [Website Link](https://vxdio738db3399247899b.z13.web.core.windows.net/dashboard)
 

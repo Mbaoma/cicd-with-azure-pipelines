@@ -1,5 +1,5 @@
 trigger:
-  - main
+  - master
 
 stages:
   - stage: Build
@@ -18,26 +18,19 @@ stages:
             - task: Npm@1
               inputs:
                 command: "install"
-                workingDir: ./heroes-frontend
+                 #workingDir: ./heroes-frontend
               displayName: "Npm Install"
 
             - task: Npm@1
               inputs:
                 command: custom
-                workingDir: ./heroes-frontend
+                # workingDir: ./heroes-frontend
                 customCommand: "run build"
               displayName: "Build Angular app"
             
-            # - task: Npm@1
-            #   inputs:
-            #     command: custom
-            #     workingDir: ./heroes-frontend/src
-            #     customCommand: "run test"
-            #   displayName: "Test Angular app"
-            
             - script: |
                 mkdir $(Build.ArtifactStagingDirectory)/dist
-                cp -rf ./heroes-frontend/* $(Build.ArtifactStagingDirectory)/dist
+                cp -rf dist/./* $(Build.ArtifactStagingDirectory)/dist
               displayName: Copy dist contents
 
             - task: PublishBuildArtifacts@1
